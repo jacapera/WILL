@@ -1,8 +1,8 @@
-/* 
-  Importante: 
+/*
+  Importante:
   No modificar ni el nombre ni los argumetos que reciben las funciones, sólo deben escribir
-  código dentro de las funciones ya definidas. 
-  No comentar la funcion 
+  código dentro de las funciones ya definidas.
+  No comentar la funcion
 */
 function filtrar(funcion) {
   // Escribi una función filtrar en el prototipo de Arrays,
@@ -24,6 +24,18 @@ function filtrar(funcion) {
   // productos.filtrar(function(p) {
   //   return p.price >= 50;
   // }) => [{price: 100, name:'tv'}]
+
+  Array.prototype.filtrar = function(callback){
+    const nuevoArreglo = [];
+
+    for (let i = 0; i < this.length; i++) {
+      if (callback(this[i])) {
+        nuevoArreglo.push(this[i]);
+      }
+    }
+
+    return nuevoArreglo;
+  }
 
 };
 

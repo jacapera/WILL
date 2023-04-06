@@ -1,8 +1,8 @@
-/* 
-  Importante: 
+/*
+  Importante:
   No modificar ni el nombre ni los argumetos que reciben las funciones, sólo deben escribir
-  código dentro de las funciones ya definidas. 
-  No comentar la funcion 
+  código dentro de las funciones ya definidas.
+  No comentar la funcion
 */
 function crearClasePersona() {
   class Persona {
@@ -11,7 +11,10 @@ function crearClasePersona() {
       // Inicializar las propiedades de la persona con los valores recibidos como argumento
 
       // Tu código aca:
-
+      this.nombre = nombre,
+      this.edad = edad,
+      this.hobbies = hobbies,
+      this.amigos = amigos
     }
 
     addFriend(nombre, edad) {
@@ -21,6 +24,9 @@ function crearClasePersona() {
 
       // Tu código aca:
 
+      const amigo = {nombre, edad};
+      this.amigos.push(amigo);
+      console.log(this.amigos);
     }
 
     addHobby(hobby) {
@@ -28,8 +34,10 @@ function crearClasePersona() {
       // No debe retornar nada.
 
       // Tu código aca:
+      this.hobbies.push(hobby);
 
     }
+
     getFriends() {
       // El método 'getFriends' debe retornar un arreglo con sólo los nombres del arreglo de amigos
       // de la persona.
@@ -39,6 +47,22 @@ function crearClasePersona() {
 
       // Tu código aca:
 
+      let nombreAmigos = [];
+      /** ---------------------------------------------------------------------
+       * Cuando utilizo for...of puedo acceder a la propiedad con Dot-Notation
+       */ // ------------------------------------------------------------------
+      // for (let amigo of this.amigos) {
+      //   nombreAmigos.push(amigo.nombre)
+      // }
+      /** -------------------------------------------------------------------------
+       * Cuando utilizo for...in puedo acceder a la propiedad con Bracket-Notation
+       */ // ----------------------------------------------------------------------
+      for (let propiedad in this.amigos) {
+        nombreAmigos.push(this.amigos[propiedad].nombre)
+      }
+
+      console.log(nombreAmigos);
+      return nombreAmigos;
     }
 
     getHobbies() {
@@ -47,6 +71,7 @@ function crearClasePersona() {
       // persona.getHobbies() debe devolver ['correr', 'dormir', 'nadar']
 
       // Tu código aca:
+      return this.hobbies;
 
     }
 
@@ -66,6 +91,14 @@ function crearClasePersona() {
       // persona.getPromedioEdad() debería devolver 29 ya que (33 + 25) / 2 = 29
 
       // Tu código aca:
+      let sumaEdades = 0;
+      let cantidadEdades = [];
+      for ( let amigo of this.amigos) {
+        sumaEdades += amigo.edad;
+        cantidadEdades.push(amigo.edad);
+      }
+
+      return sumaEdades / cantidadEdades.length;
 
     }
   };
